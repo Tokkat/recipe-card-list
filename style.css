@@ -1,0 +1,218 @@
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@700&family=Raleway:wght@500;700&display=swap');
+
+/* Variables */
+
+:root {
+    --clr-body-bg: #B696C5;
+    --clr-recipe-bg: white;
+    --clr-recipe-title: #311B92;
+    --clr-recipe-text: black;
+    --clr-statistics-title: #546E7A;
+    --clr-statistics-text: #311B92;
+    --clr-btn-bg: #F99301;
+    --clr-btn-text: white;
+
+    --ff-recipe-title: 'Raleway', sans-serif;
+    --fw-recipe-title: 500;
+    --ff-recipe-text: 'Raleway', sans-serif;
+    --fw-recipe-text: 500;
+    --ff-statistics-text: 'Mulish', sans-serif;
+    --fw-statistics-text: 700;
+    --ff-btn: 'Raleway', sans-serif;
+    --fw-btn: 500;
+
+    --padding-bottom: 1.2rem;
+    --border-radius: 10px;
+}
+
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    background-color: var(--clr-body-bg);
+}
+
+
+/* Box sizing rules */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* Remove default margin */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+
+/* Remove default margin, padding and list styles on ul, ol elements */
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+/* Make images easier to work with */
+
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* Main */
+
+.main {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Recipes */
+
+.recipe-card {
+    display: grid;
+    width: clamp(350px, 100%, 700px);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: minmax(150px, 1fr) repeat(3, auto);
+}
+
+.recipe-img {
+    width: inherit;
+    background-image: url(https://source.unsplash.com/random/?cake);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    grid-column: 1 / -1;
+}
+
+.recipe-content {
+    background-color: var(--clr-recipe-bg);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    grid-column: 1 / -1;
+    grid-row: 2 / span 2;
+    padding: 20px 20px 40px;
+}
+
+.recipe-content > * {
+    padding-bottom: var(--padding-bottom);
+}
+
+.recipe__title {
+    font-family: var(--ff-recipe-title);
+    font-weight: var(--fw-recipe-title);
+    font-size: 2.625rem;
+    line-height: 1.2;
+    color: var(--clr-recipe-title);
+    padding-bottom: calc( var(--padding-bottom) * 0.5 );
+}
+.recipe__rating {
+    display: flex;
+    gap: 5px;
+}
+
+.recipe__rating-star {
+    height: 1em;
+}
+
+.recipe__teaser {
+    font-family: var(--ff-recipe-text);
+    font-weight: var(--fw-recipe-text);
+    font-size: 1.1875rem;
+    color: var(--clr-recipe-text);
+}
+
+.recipe__statistics {
+    display: flex;
+    gap: 1em;
+    font-family: var(--ff-statistics-text);
+    font-weight: var(--fw-statistics-text);
+    font-size: 1.5625rem;
+    color: var(--clr-statistics-text);
+}
+
+.recipe__statistics-title {
+    font-family: var(--ff-recipe-text);
+    font-weight: var(--fw-recipe-text);
+    font-size: 1.25rem;
+    color: var(--clr-statistics-title);
+}
+
+.recipe-link {
+    height: 50px;
+    border-radius: --border-radius;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column-start: 2;
+    grid-row: 3 / span 2;
+    align-self: end;
+    z-index: 2;
+}
+
+.recipe-link__link {
+    background-color: var(--clr-btn-bg);
+    padding: 0.5em 1.25em;
+    display: flex;
+    justify-content: space-around;
+    font-family: var(--ff-btn);
+    font-weight: var(--fw-btn);
+    font-size: 22.5px;
+    color: var(--clr-btn-text);
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.recipe-link__text {
+    min-width: 7em;
+}
+
+.recipe-link__arrow-symbol {
+    width: 1.2em;
+}
+
+@media (min-width: 550px) {
+    .recipe-card {
+      grid-template-columns: minmax(150px, 1fr) 1fr 1fr 30px;
+      grid-template-rows: repeat(3, auto);
+    }
+
+    .recipe-img {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      border-radius: 10px 0 0 10px;
+    }
+
+    .recipe-content {
+      grid-column: 2 / span 2;
+      grid-row: 1 / span 2;
+      border-radius: 0 10px 10px 0;
+      padding-bottom: 25px;
+    }
+
+    .recipe-link {
+      grid-column: 3 / span 2;
+      grid-row: 2 / span 2;
+    }
+  }
